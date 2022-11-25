@@ -1,0 +1,22 @@
+﻿@model Client
+@{
+    ViewData["Title"] = "ClientInformation";
+}
+
+<div>
+    <form action="~/Admin/Delete" method="delete">
+        <input name="OwnerCode" value="@Model.OwnerCode" style="visibility: hidden" />
+        <button type="submit">Remove</button>
+    </form>
+</div>
+    <div>
+        <form action="~/Admin/SaveChanges" method="post">
+            <input name="Name" value="@Model.Name" />
+            <input name="Surname" value="@Model.Surname" />
+            <input name="City" value="@Model.City" />
+            <input name="OwnerCode" value="@Model.OwnerCode" style="visibility: hidden" />
+            <button type="submit">Change</button>
+        </form>
+    </div>
+<h1>DeleteClient</h1>
+
