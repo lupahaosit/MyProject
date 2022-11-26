@@ -13,6 +13,7 @@
         <th>На счету</th>
         <th>Город</th>
         <th>Персональный код</th>
+        <th>Send</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -20,15 +21,24 @@
             <td>@item.Id </td>
             <td>@item.Name </td>
             <td>@item.Surname </td>
+            <td>@item.OwnerCode</td>
+            <td>@item.Money</td>
             <td>
                 <form action="~/Admin/ClientInformation" method="get">
                     <input type="text" name="OwnerCode" value="@item.OwnerCode" style="visibility: hidden" />
                     <button type="submit">Remove</button>
                 </form>
             </td>
-
+            <td>
+                <form action="~/Admin/Send" method="get" >
+                    <input name="OwnerCode" value="@item.OwnerCode" style="visibility:hidden"/>
+                    <button type="submit"> Send</button>
+                </form>
+            </td>
         </tr>
         
     }
 
+
 </table>
+<a href="/Admin/AddClientForm" class="btn" style="border: solid black 1px">Add</a>

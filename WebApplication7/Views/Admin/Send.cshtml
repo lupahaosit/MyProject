@@ -1,0 +1,14 @@
+﻿@model Client
+@{
+    ViewData["Title"] = "Send";
+}
+<div>
+   На счету @Model.Money
+</div>
+    <form action="~/Admin/SendMoney" method="post">
+        <input type="number" name="money" value="Money" />
+        <input type="text" name="OwnerCode" value="OwnerCode"/>
+        <button type="submit"> отправить </button>
+    </form>
+<h1>Send</h1>
+

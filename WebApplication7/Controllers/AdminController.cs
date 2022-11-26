@@ -122,7 +122,7 @@ namespace WebApplication7.Controllers
 
         DB database = new DB();
         Random rnd = new Random();
-       
+        static Client client;
         public IActionResult ShowClients()
         {
             
@@ -214,6 +214,19 @@ namespace WebApplication7.Controllers
             }
             database.SaveChanges();
 
+            return Redirect("~/Admin/FullBase");
+        }
+        public IActionResult Send( string OwnerCode)
+        {
+            client = database.Clients.Where(e => e.OwnerCode == OwnerCode).First();
+            return View(client);
+        }
+
+        public IActionResult SendMoney(string money, string OwnerCode)
+        {
+            database.Clients.Where(e => e.OwnerCode == OwnerCode).First().Money += Convert.ToInt32(money);
+            database.Clients.Find(client.Id).Money -= Convert.ToInt32(money);
+            database.SaveChanges();
             return Redirect("~/Admin/FullBase");
         }
     }
